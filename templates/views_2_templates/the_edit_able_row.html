@@ -1,0 +1,1163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+
+
+
+
+
+
+
+
+
+      <div id="image_show" style="margin-top: 40px;">
+
+          <img src="{{ the_edit_able_row.model_Property_and_room_images_1.first.model_Property_and_room_images_1.url }}" style="width: 100%;margin-top: 15px;border: 1px solid black;height: 400px;" />
+
+      </div>
+
+
+
+
+
+
+<form action="{% url 'Show_List_Edit_Image' %}" method="POST">{% csrf_token %}
+    <div class="row" style="margin-top: 50px;">
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align: center;">
+            {% for j in the_edit_able_row.model_Property_and_room_images_1.all %}
+                <img src="{{ j.model_Property_and_room_images_1.url }}" height="40" width="40" onclick="big_image('{{j.model_Property_and_room_images_1.url}}')"/>
+            {% endfor %}
+        </div>
+
+
+            <input type="hidden" name="get_the_list_id_for_image" value="{{the_edit_able_row.id}}">
+
+
+    </div>
+    <br>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin-top: 20px; text-align: center;"><button type="submit" class="btn btn-primary">Click to change image</button></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+
+</form>
+
+<br>
+
+<form action="{% url 'Show_List_Edit_Total' %}" method="POST">{% csrf_token %}
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <input type="hidden" name="get_the_list_id_for_image_all" value="{{the_edit_able_row.id}}">
+
+
+<label class="bmd-label-floating">Maximum length of stay</label><br>
+{% if the_edit_able_row.model_offering_accommodation == 'Room(s) in an existing sharehouse' %}
+
+          <select name="Room_availability_model_offering_accommodation" class="selectpicker">
+            <option value="Room(s) in an existing sharehouse" selected>Room(s) in an existing sharehouse</option>
+            <option value="Student accommodation">Student accommodation</option>
+            <option value="Homestay">Homestay</option>
+
+          </select>
+{% elif the_edit_able_row.model_offering_accommodation == 'Student accommodation' %}
+
+<select name="Room_availability_model_offering_accommodation" class="selectpicker">
+            <option value="Room(s) in an existing sharehouse" >Room(s) in an existing sharehouse</option>
+            <option value="Student accommodation" selected>Student accommodation</option>
+            <option value="Homestay">Homestay</option>
+
+          </select>
+{% elif the_edit_able_row.model_offering_accommodation == 'Homestay' %}
+
+<select name="Room_availability_model_offering_accommodation" class="selectpicker">
+            <option value="Room(s) in an existing sharehouse" >Room(s) in an existing sharehouse</option>
+            <option value="Student accommodation">Student accommodation</option>
+            <option value="Homestay" selected>Homestay</option>
+
+          </select>
+        {% else %}
+{% endif %}
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+<label class="bmd-label-floating">Type of property</label><br>
+{% if the_edit_able_row.model_property == 'House' %}
+          <select name="Edit_Type_of_model_property" class="selectpicker">
+            <option value="House" selected>House</option>
+            <option value="Flat">Flat</option>
+          </select>
+{% elif the_edit_able_row.model_property == 'Flat' %}
+         <select name="Edit_Type_of_model_property" class="selectpicker">
+            <option value="House">House</option>
+            <option value="Flat" selected>Flat</option>
+
+          </select>
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Property Address</label><br>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Edit_Property_Address" aria-describedby="emailHelp" value="{{the_edit_able_row.model_Property_Address}}">
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Total bedrooms</label><br>
+        {% if the_edit_able_row.model_property_bedrooms == '2' %}
+          <select name="Edit_model_property_bedrooms" class="selectpicker">
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6+">6+</option>
+          </select>
+        {% elif the_edit_able_row.model_property_bedrooms == '3' %}
+         <select name="Edit_model_property_bedrooms" class="selectpicker">
+            <option value="2" >2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6+">6+</option>
+
+          </select>
+        {% elif the_edit_able_row.model_property_bedrooms == '4' %}
+         <select name="Edit_model_property_bedrooms" class="selectpicker">
+            <option value="2" >2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6+">6+</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_property_bedrooms == '5' %}
+         <select name="Edit_model_property_bedrooms" class="selectpicker">
+            <option value="2" >2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+            <option value="6+">6+</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_property_bedrooms == '6+' %}
+         <select name="Edit_model_property_bedrooms" class="selectpicker">
+            <option value="2" >2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6+" selected>6+</option>
+
+          </select>
+        {% else %}
+{% endif %}
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Total bathrooms</label><br>
+        {% if the_edit_able_row.model_property_bathrooms == '1' %}
+          <select name="Edit_Type_model_property_bathrooms" class="selectpicker">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4+">4+</option>
+          </select>
+        {% elif the_edit_able_row.model_property_bathrooms == '2' %}
+        <select name="Edit_Type_model_property_bathrooms" class="selectpicker">
+            <option value="1" >1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4+">4+</option>
+          </select>
+        {% elif the_edit_able_row.model_property_bathrooms == '3' %}
+        <select name="Edit_Type_model_property_bathrooms" class="selectpicker">
+            <option value="1" >1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4+">4+</option>
+          </select>
+        {% elif the_edit_able_row.model_property_bathrooms == '+4' %}
+        <select name="Edit_Type_model_property_bathrooms" class="selectpicker">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4+" selected>4+</option>
+          </select>
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Parking</label><br>
+        {% if the_edit_able_row.model_Parking == 'No parking' %}
+          <select name="Edit_Type_model_Parking" class="selectpicker">
+            <option value="No parking" selected>No parking</option>
+            <option value="Off-street parking">Off-street parking</option>
+            <option value="On-street Parking">On-street Parking</option>
+          </select>
+        {% elif the_edit_able_row.model_Parking == 'Off-street parking' %}
+        <select name="Edit_Type_model_Parking" class="selectpicker">
+            <option value="No parking" >No parking</option>
+            <option value="Off-street parking" selected>Off-street parking</option>
+            <option value="On-street Parking">On-street Parking</option>
+          </select>
+        {% elif the_edit_able_row.model_Parking == 'On-street Parking' %}
+        <select name="Edit_Type_model_Parking" class="selectpicker">
+            <option value="No parking" >No parking</option>
+            <option value="Off-street parking">Off-street parking</option>
+            <option value="On-street Parking" selected>On-street Parking</option>
+          </select>
+
+        {% else %}
+{% endif %}
+
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Internet</label><br>
+        {% if the_edit_able_row.model_Internet == 'No internet' %}
+          <select name="Edit_Type_model_Internet" class="selectpicker">
+            <option value="No internet" selected>No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+          </select>
+        {% elif the_edit_able_row.model_Internet == 'Available but not inc in rent' %}
+        <select name="Edit_Type_model_Internet" class="selectpicker">
+            <option value="No internet" >No internet</option>
+            <option value="Available but not inc in rent" selected>Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+          </select>
+        {% elif the_edit_able_row.model_Internet == 'Included in rent' %}
+        <select name="Edit_Type_model_Internet" class="selectpicker">
+            <option value="No internet" >No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent" selected>Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+          </select>
+        {% elif the_edit_able_row.model_Internet == 'Unlimited included in rent' %}
+        <select name="Edit_Type_model_Internet" class="selectpicker">
+            <option value="No internet" >No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent" selected>Unlimited included in rent</option>
+          </select>
+
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Total number of flatmates</label><br>
+        {% if the_edit_able_row.model_Total_number_of_flatmates == '1' %}
+          <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7+">7+</option>
+          </select>
+        {% elif the_edit_able_row.model_Total_number_of_flatmates == '2' %}
+        <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7+">7+</option>
+          </select>
+        {% elif the_edit_able_row.model_Total_number_of_flatmates == '3' %}
+        <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1">1</option>
+            <option value="2" >2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7+">7+</option>
+          </select>
+        {% elif the_edit_able_row.model_Total_number_of_flatmates == '4' %}
+        <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1" >1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7+">7+</option>
+          </select>
+        {% elif the_edit_able_row.model_Total_number_of_flatmates == '5' %}
+        <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5" selected>5</option>
+            <option value="6">6</option>
+            <option value="7+">7+</option>
+          </select>
+        {% elif the_edit_able_row.model_Total_number_of_flatmates == '6' %}
+        <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1" >1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6" selected>6</option>
+            <option value="7+">7+</option>
+          </select>
+        {% elif the_edit_able_row.model_Total_number_of_flatmates == '7+' %}
+        <select name="Edit_Type_model_Total_number_of_flatmates" class="selectpicker">
+            <option value="1" >1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7+" selected>7+</option>
+          </select>
+
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<label for="exampleInputEmail11">Room name</label><br>
+<input type="text" class="form-control" id="exampleInputEmail11" name="Edit_model_Room_name" aria-describedby="emailHelp" value="{{the_edit_able_row.model_Room_name}}">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <label class="bmd-label-floating">Room type</label><br>
+        {% if the_edit_able_row.model_Room_type == 'Private' %}
+          <select name="Edit_model_Room_type" class="selectpicker">
+            <option value="Private" selected>Private</option>
+            <option value="Shared">Shared</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Room_type == 'Shared' %}
+         <select name="Edit_model_Room_type" class="selectpicker">
+            <option value="Private" >Private</option>
+            <option value="Shared" selected>Shared</option>
+
+          </select>
+
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+         <label class="bmd-label-floating">Room furnishings</label><br>
+        {% if the_edit_able_row.model_Room_furnishings == 'Flexible' %}
+          <select name="Edit_model_Room_furnishings" class="selectpicker">
+            <option value="Flexible" selected>Flexible</option>
+            <option value="Furnished">Furnished</option>
+            <option value="Shared">Shared</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Room_furnishings == 'Shared' %}
+         <select name="Edit_model_Room_furnishings" class="selectpicker">
+            <option value="Flexible" >Flexible</option>
+            <option value="Furnished" selected>Furnished</option>
+            <option value="Unfurnished" >Unfurnished</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Room_furnishings == 'Unfurnished' %}
+         <select name="Edit_model_Room_furnishings" class="selectpicker">
+            <option value="Flexible" >Flexible</option>
+            <option value="Furnished" >Furnished</option>
+            <option value="Unfurnished" selected>Unfurnished</option>
+
+          </select>
+
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Bathroom</label><br>
+        {% if the_edit_able_row.model_Bathroom_type == 'Shared' %}
+          <select name="Edit_model_Bathroom_type" class="selectpicker">
+            <option value="Shared" selected>Shared</option>
+            <option value="Own">Own</option>
+            <option value="Ensuite">Ensuite</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Bathroom_type == 'Own' %}
+         <select name="Edit_model_Bathroom_type" class="selectpicker">
+            <option value="Shared" >Shared</option>
+            <option value="Own" selected>Own</option>
+            <option value="Ensuite" >Ensuite</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Bathroom_type == 'Ensuite' %}
+         <select name="Edit_model_Bathroom_type" class="selectpicker">
+            <option value="Shared" >Shared</option>
+            <option value="Own" >Own</option>
+            <option value="Ensuite" selected>Ensuite</option>
+
+          </select>
+
+        {% else %}
+{% endif %}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Bed Size</label><br>
+        {% if the_edit_able_row.model_Bed_Size == 'Single' %}
+          <select name="Edit_model_Bed_Size" class="selectpicker">
+            <option value="Single" selected>Single</option>
+            <option value="Double">Double</option>
+            <option value="Queen">Queen</option>
+            <option value="King">King</option>
+            <option value="None">None</option>
+          </select>
+        {% elif the_edit_able_row.model_Bed_Size == 'Double' %}
+         <select name="Edit_model_Bed_Size" class="selectpicker">
+            <option value="Single" >Single</option>
+            <option value="Double" selected>Double</option>
+            <option value="Queen">Queen</option>
+            <option value="King">King</option>
+            <option value="None">None</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Bed_Size == 'Queen' %}
+         <select name="Edit_model_Bed_Size" class="selectpicker">
+            <option value="Single" >Single</option>
+            <option value="Double">Double</option>
+            <option value="Queen" selected>Queen</option>
+            <option value="King">King</option>
+            <option value="None">None</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Bed_Size == 'King' %}
+         <select name="Edit_model_Bed_Size" class="selectpicker">
+            <option value="Single" >Single</option>
+            <option value="Double">Double</option>
+            <option value="Queen">Queen</option>
+            <option value="King" selected>King</option>
+            <option value="None">None</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Bed_Size == 'None' %}
+         <select name="Edit_model_Bed_Size" class="selectpicker">
+            <option value="Single" >Single</option>
+            <option value="Double">Double</option>
+            <option value="Queen">Queen</option>
+            <option value="King">King</option>
+            <option value="None" selected>None</option>
+
+          </select>
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+    Room furnishings and features<br><br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="padding-left: 37px;">
+
+
+        {% if the_edit_able_row.model_Room_furnishings_features_Bed_side_table == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121" name="Edit_model_Room_furnishings_features_Bed_side_table" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121">Bed side table</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122" name="Edit_model_Room_furnishings_features_Bed_side_table" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122">Bed side table</label>
+        {% endif %}
+
+<br>
+        {% if the_edit_able_row.model_Room_furnishings_features_Wardrobe == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Wardrobe" name="Edit_model_Room_furnishings_features_Wardrobe" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Wardrobe">Wardrobe</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Wardrobe" name="Edit_model_Room_furnishings_features_Wardrobe" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Wardrobe">Wardrobe</label>
+        {% endif %}
+
+<br>
+        {% if the_edit_able_row.model_Room_furnishings_features_Drawers == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Drawers" name="Edit_model_Room_furnishings_features_Drawers" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Drawers">Drawers</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Drawers" name="Edit_model_Room_furnishings_features_Drawers" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Drawers">Drawers</label>
+        {% endif %}
+
+<br>
+        {% if the_edit_able_row.model_Room_furnishings_features_Air_conditioner == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121conditioner" name="Edit_model_Room_furnishings_features_Air_conditioner" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121conditioner">Air conditioner</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122conditioner" name="Edit_model_Room_furnishings_features_Air_conditioner" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122conditioner">Air conditioner</label>
+        {% endif %}
+
+
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="padding-left: 37px;">
+
+        {% if the_edit_able_row.model_Room_furnishings_features_Heater == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Heater" name="Edit_model_Room_furnishings_features_Heater" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Heater">Heatere</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Heater" name="Edit_model_Room_furnishings_features_Heater" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Heater">Heater</label>
+        {% endif %}
+<br>
+
+        {% if the_edit_able_row.model_Room_furnishings_features_Desk == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Desk" name="Edit_model_Room_furnishings_features_Desk" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Desk">Desk</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Desk" name="Edit_model_Room_furnishings_features_Desk" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Desk">Desk</label>
+        {% endif %}
+<br>
+
+        {% if the_edit_able_row.model_Room_furnishings_features_Lamp == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Lamp" name="Edit_model_Room_furnishings_features_Lamp" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Lamp">Lamp</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Lamp" name="Edit_model_Room_furnishings_features_Lamp" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Lamp">Lamp</label>
+        {% endif %}
+
+<br>
+        {% if the_edit_able_row.model_Room_furnishings_features_Chair == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Chair" name="Edit_model_Room_furnishings_features_Chair" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Chair">Chair</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Chair" name="Edit_model_Room_furnishings_features_Chair" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Chair">Chair</label>
+        {% endif %}
+
+
+
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="padding-left: 37px;">
+
+        {% if the_edit_able_row.model_Room_furnishings_features_Couch == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Couch" name="Edit_model_Room_furnishings_features_Couch" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Couch">Couch</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Couch" name="Edit_model_Room_furnishings_features_Couch" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Couch">Couch</label>
+        {% endif %}
+<br>
+
+        {% if the_edit_able_row.model_Room_furnishings_features_TV == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121TV" name="Edit_model_Room_furnishings_features_TV" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121TV">TV</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122TV" name="Edit_model_Room_furnishings_features_TV" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122TV">TV</label>
+        {% endif %}
+
+<br>
+        {% if the_edit_able_row.model_Room_furnishings_features_Balcony == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Balcony" name="Edit_model_Room_furnishings_features_Balcony" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Balcony">Balcony</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Balcony" name="Edit_model_Room_furnishings_features_Balcony" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Balcony">Balcony</label>
+        {% endif %}
+
+<br>
+        {% if the_edit_able_row.model_Room_furnishings_features_Door_lock == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Door_lock" name="Edit_model_Room_furnishings_features_Door_lock" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Door_lock">Door lock</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Door_lock" name="Edit_model_Room_furnishings_features_Door_lock" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Door_lock">Door lock</label>
+        {% endif %}
+
+
+
+
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="padding-left: 37px;">
+
+        {% if the_edit_able_row.model_Room_furnishings_features_Kitchenette == 'on' %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail121Kitchenette" name="Edit_model_Room_furnishings_features_Kitchenette" aria-describedby="emailHelp" checked>
+        <label class="form-check-label" for="exampleInputEmail121Kitchenette">Kitchenette</label>
+        {% else %}
+        <input type="checkbox" class="form-check-input" id="exampleInputEmail122Kitchenette" name="Edit_model_Room_furnishings_features_Kitchenette" aria-describedby="emailHelp" >
+        <label class="form-check-label" for="exampleInputEmail122Kitchenette">Kitchenette</label>
+        {% endif %}
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+
+
+<br>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <label for="exampleInputEmail1rent">Weekly rent</label><br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+        </div>
+            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="exampleInputEmail1rent" name="Edit_model_room_Weekly_rent"  value="{{the_edit_able_row.model_room_Weekly_rent}}">
+
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+<label class="bmd-label-floating">Bond</label><br>
+        {% if the_edit_able_row.model_room_changed_Bond == '1 week' %}
+          <select name="Edit_model_room_changed_Bond" class="selectpicker">
+            <option value="1 week" selected>1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+
+          </select>
+        {% elif the_edit_able_row.model_room_changed_Bond == '2 week' %}
+         <select name="Edit_model_room_changed_Bond" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week" selected>2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+
+
+          </select>
+        {% elif the_edit_able_row.model_room_changed_Bond == '3 week' %}
+         <select name="Edit_model_room_changed_Bond" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week" selected>3 week</option>
+            <option value="4 week">4 week</option>
+
+
+          </select>
+
+        {% elif the_edit_able_row.model_room_changed_Bond == '4 week' %}
+         <select name="Edit_model_room_changed_Bond" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week" selected>4 week</option>
+
+
+          </select>
+
+
+        {% else %}
+{% endif %}
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+
+<label class="bmd-label-floating">Bond</label><br>
+        {% if the_edit_able_row.model_room_changed_Bills == 'Additional to the rent' %}
+          <select name="Edit_model_room_changed_Bills" class="selectpicker">
+            <option value="Additional to the rent" selected>Additional to the rent</option>
+            <option value="Some included in the rent">Some included in the rent</option>
+            <option value="Included in rent">Included in rent</option>
+
+
+          </select>
+        {% elif the_edit_able_row.model_room_changed_Bills == 'Some included in the rent' %}
+         <select name="Edit_model_room_changed_Bills" class="selectpicker">
+            <option value="Additional to the rent" >Additional to the rent</option>
+            <option value="Some included in the rent" selected>Some included in the rent</option>
+            <option value="Included in rent">Included in rent</option>
+
+
+
+          </select>
+        {% elif the_edit_able_row.model_room_changed_Bills == 'Included in rent' %}
+         <select name="Edit_model_room_changed_Bills" class="selectpicker">
+            <option value="Additional to the rent" >Additional to the rent</option>
+            <option value="Some included in the rent">Some included in the rent</option>
+            <option value="Included in rent" selected>Included in rent</option>
+
+
+
+          </select>
+
+
+
+        {% else %}
+{% endif %}
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <label class="bmd-label-floating">Date available</label><br>
+        {% if the_edit_able_row.model_Room_availability_Date %}
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Date</span>
+              </div>
+<!--              <input id="id_Weekly_rent" name="edit_model_Room_availability_Date" type="date" value="2022-03-29" onchange="lets_enable_star_button()" onclick="lets_enable_star_button()" class="form-control" aria-label="Amount (to the nearest dollar)">-->
+              <input id="id_Weekly_rent" name="edit_model_Room_availability_Date" type="date" value="{{x}}" onchange="lets_enable_star_button()" onclick="lets_enable_star_button()" class="form-control" aria-label="Amount (to the nearest dollar)">
+
+
+
+
+
+            </div>
+        {% endif %}
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <label class="bmd-label-floating">Minimum length of stay</label><br>
+        {% if the_edit_able_row.model_Room_availability_Minimum_length_stay == '1 week' %}
+          <select name="Edit_model_Room_availability_Minimum_length_stay" class="selectpicker">
+            <option value="1 week" selected>1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Room_availability_Minimum_length_stay == '2 week' %}
+         <select name="Edit_model_Room_availability_Minimum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week" selected>2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+
+
+          </select>
+        {% elif the_edit_able_row.model_Room_availability_Minimum_length_stay == '3 week' %}
+         <select name="Edit_model_Room_availability_Minimum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week" selected>3 week</option>
+            <option value="4 week">4 week</option>
+
+
+          </select>
+
+        {% elif the_edit_able_row.model_Room_availability_Minimum_length_stay == '4 week' %}
+         <select name="Edit_model_Room_availability_Minimum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week" selected>4 week</option>
+
+
+          </select>
+
+
+        {% else %}
+{% endif %}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <label class="bmd-label-floating">Maximum length of stay</label><br>
+        {% if the_edit_able_row.model_Room_availability_Maximum_length_stay == '1 week' %}
+          <select name="Edit_model_Room_availability_Maximum_length_stay" class="selectpicker">
+            <option value="1 week" selected>1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+            <option value="1 month">1 month</option>
+            <option value="More">More</option>
+          </select>
+        {% elif the_edit_able_row.model_Room_availability_Maximum_length_stay == '2 week' %}
+         <select name="Edit_model_Room_availability_Maximum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week" selected>2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+            <option value="1 month">1 month</option>
+            <option value="More">More</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Room_availability_Maximum_length_stay == '3 week' %}
+         <select name="Edit_model_Room_availability_Maximum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week" selected>3 week</option>
+            <option value="4 week">4 week</option>
+            <option value="1 month">1 month</option>
+            <option value="More">More</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Room_availability_Maximum_length_stay == '4 week' %}
+         <select name="Edit_model_Room_availability_Maximum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week" selected>4 week</option>
+            <option value="1 month">1 month</option>
+            <option value="More">More</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Room_availability_Maximum_length_stay == '1 month' %}
+         <select name="Edit_model_Room_availability_Maximum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+            <option value="1 month" selected>1 month</option>
+            <option value="More" >More</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Room_availability_Maximum_length_stay == 'More' %}
+         <select name="Edit_model_Room_availability_Maximum_length_stay" class="selectpicker">
+            <option value="1 week" >1 week</option>
+            <option value="2 week">2 week</option>
+            <option value="3 week">3 week</option>
+            <option value="4 week">4 week</option>
+            <option value="1 month" >1 month</option>
+            <option value="More" selected>More</option>
+
+          </select>
+        {% else %}
+{% endif %}
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <label class="bmd-label-floating">Flatmate Preference</label><br>
+        {% if the_edit_able_row.model_Flatmate_Preference_name == 'Anyone' %}
+          <select name="Edit_model_Flatmate_Preference_name" class="selectpicker">
+            <option value="Anyone" selected>Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+          </select>
+        {% elif the_edit_able_row.model_Flatmate_Preference_name == 'Women only' %}
+         <select name="Edit_model_Flatmate_Preference_name" class="selectpicker">
+            <option value="Anyone" >Anyone</option>
+            <option value="Women only" selected>Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+
+          </select>
+        {% elif the_edit_able_row.model_Flatmate_Preference_name == 'Men only' %}
+         <select name="Edit_model_Flatmate_Preference_name" class="selectpicker">
+            <option value="Anyone" >Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only" selected>Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Flatmate_Preference_name == 'No couples' %}
+         <select name="Edit_model_Flatmate_Preference_name" class="selectpicker">
+            <option value="Anyone" >Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples" selected>No couples</option>
+            <option value="Couple">Couple</option>
+
+          </select>
+
+        {% elif the_edit_able_row.model_Flatmate_Preference_name == 'Couple' %}
+         <select name="Edit_model_Flatmate_Preference_name" class="selectpicker">
+            <option value="Anyone" >Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple" selected>Couple</option>
+
+          </select>
+        {% else %}
+{% endif %}
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+
+<br>
+
+Accepting
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        {% if the_edit_able_row.model_Accepting_Backpackers == 'on' %}
+            <input name="edited_model_Accepting_Backpackers" type="checkbox" id="cb11" checked/>
+            <label for="cb11" >
+        Backpackers
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_Backpackers" type="checkbox" id="cb1" />
+            <label for="cb1" >
+        Backpackers
+            </label>
+        {% endif %}
+
+<br>
+
+        {% if the_edit_able_row.model_Accepting_Students == 'on' %}
+             <input name="Edited_model_Accepting_Students" type="checkbox" id="cb2Backpackers1" checked/>
+            <label for="cb2Backpackers1" >
+        Students
+            </label>
+        {% else %}
+             <input name="Edited_model_Accepting_Students" type="checkbox" id="cb2Backpackers" />
+            <label for="cb2Backpackers" >
+        Students
+            </label>
+        {% endif %}
+
+        <br>
+
+        {% if the_edit_able_row.model_Accepting_Smokers == 'on' %}
+            <input name="edited_model_Accepting_Smokers" type="checkbox" id="cb23" checked/>
+            <label for="cb23" >
+        Smokers
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_Smokers" type="checkbox" id="cb3" />
+            <label for="cb3" >
+        Smokers
+            </label>
+        {% endif %}
+
+
+
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        {% if the_edit_able_row.model_Accepting_LGBTI == 'on' %}
+            <input name="edited_model_Accepting_LGBTI" type="checkbox" id="cb44" checked/>
+             <label for="cb44" >
+        LGBTI+
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_LGBTI" type="checkbox" id="cb4" />
+             <label for="cb4" >
+        LGBTI+
+            </label>
+        {% endif %}
+
+        <br>
+        {% if the_edit_able_row.model_Accepting_years_olds == 'on' %}
+            <input name="edited_model_Accepting_years_olds" type="checkbox" id="cb5u" checked/>
+             <label for="cb5u" >
+        40+ years olds
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_years_olds" type="checkbox" id="cb5" />
+             <label for="cb5" >
+        40+ years olds
+            </label>
+        {% endif %}
+
+
+        <br>
+
+
+        {% if the_edit_able_row.model_Accepting_Children == 'on' %}
+            <input name="edited_model_Accepting_Children" type="checkbox" id="cb6t" checked/>
+            <label for="cb6t" >
+        Children
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_Children" type="checkbox" id="cb6" />
+            <label for="cb6" >
+        Children
+            </label>
+        {% endif %}
+
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        {% if the_edit_able_row.model_Accepting_Pets == 'on' %}
+            <input name="edited_model_Accepting_Pets" type="checkbox" id="cb7" checked/>
+            <label for="cb7" >
+        Pets
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_Pets" type="checkbox" id="cbt7" />
+            <label for="cbt7" >
+        Pets
+            </label>
+        {% endif %}
+
+        <br>
+
+
+
+        {% if the_edit_able_row.model_Accepting_Retirees == 'on' %}
+            <input name="edited_model_Accepting_Retirees" type="checkbox" id="cb8" checked/>
+            <label for="cb8" >
+        Retirees
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_Retirees" type="checkbox" id="cdb8" />
+            <label for="cdb8" >
+        Retirees
+            </label>
+        {% endif %}
+        <br>
+
+
+        {% if the_edit_able_row.model_Accepting_On_welfare == 'on' %}
+            <input name="edited_model_Accepting_On_welfare" type="checkbox" id="cb9" checked/>
+            <label for="cb9" >
+        On welfare
+            </label>
+        {% else %}
+            <input name="edited_model_Accepting_On_welfare" type="checkbox" id="cdb9" />
+            <label for="cdb9" >
+        On welfare
+            </label>
+        {% endif %}
+
+
+    </div>
+</div>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        Tell us about you and your flatmates
+        <textarea name="edited_model_introduce_about_your_flatmates" style="width: 100%; height: 124px;">{{the_edit_able_row.model_introduce_about_your_flatmates}}</textarea>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    What's great about living at this property?
+    <textarea name="edited_model_introduce_great_about_living" style="width: 100%; height: 124px;">{{the_edit_able_row.model_introduce_great_about_living}}</textarea>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="margin-top: 20px; text-align: center;"><button type="submit" class="btn btn-primary">Save the change and Back</button></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    function big_image(link_get){
+    console.log('link_get')
+    console.log(link_get)
+
+document.getElementById('image_show').innerHTML = `<img src="${link_get}" style="width: 100%;margin-top: 15px;border: 1px solid black;height: 400px;" />`
+
+
+    }
+
+
+</script>
+
+
+
+
+{% endblock %}
+

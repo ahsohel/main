@@ -1,0 +1,936 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>mind</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- fevicon -->
+  <link rel="icon" href="{% static '' %}images/fevicon.png" type="image/gif" />
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="{% static '' %}css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="{% static '' %}css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="{% static '' %}css/responsive.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="{% static '' %}css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<style>
+
+    /* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #0ee9a6;
+  border-radius: 19px;
+}
+
+[type=radio]:checked + p {
+  outline: 2px solid #0ee9a6;
+  border-radius: 19px;
+}
+
+</style>
+
+
+
+    <style>
+        select.selectpicker {
+    display: none;
+
+    /* Prevent FOUC */
+}
+    </style>
+
+
+</head>
+<!-- body -->
+
+<body>
+
+<div class="row" style="background-color: turquoise; text-align: center; height: 40px; font-size: 18px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">wanted to close </div>
+<!--      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><i class="fa fa-window-close" aria-hidden="true"></i></div>-->
+</div>
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" style=" margin-top: 23px;">
+
+          <p>DESCRIBE YOUR PLACE</p>
+          <p style="font-size: 24px;">About the property</p>
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+    </div>
+  </div>
+
+
+
+<form action="{% url 'flatmate_listing_place_About_the_property' %}" method="POST">{% csrf_token %}
+
+
+    <input type="hidden" name="introduce_great_about_living" value="{{introduce_great_about_living}}">
+    <input type="hidden" name="introduce_about_your_flatmates" value="{{introduce_about_your_flatmates}}">
+
+    <input type="hidden" name="Accepting_Backpackers" value="{{Accepting_Backpackers}}">
+    <input type="hidden" name="Accepting_Students" value="{{Accepting_Students}}">
+    <input type="hidden" name="Accepting_Smokers" value="{{Accepting_Smokers}}">
+    <input type="hidden" name="Accepting_LGBTI" value="{{Accepting_LGBTI}}">
+    <input type="hidden" name="Accepting_years_olds" value="{{Accepting_years_olds}}">
+    <input type="hidden" name="Accepting_Children" value="{{Accepting_Children}}">
+    <input type="hidden" name="Accepting_Pets" value="{{Accepting_Pets}}">
+    <input type="hidden" name="Accepting_Retirees" value="{{Accepting_Retirees}}">
+    <input type="hidden" name="Accepting_On_welfare" value="{{Accepting_On_welfare}}">
+
+
+    <input type="hidden" name="Flatmate_Preference_name" value="{{Flatmate_Preference_name}}">
+
+    <input type="hidden" name="image_id" value="{{image_id}}">
+
+    <input type="hidden" name="Room_availability_Date" value="{{Room_availability_Date}}">
+    <input type="hidden" name="Room_availability_Minimum_length_stay" value="{{Room_availability_Minimum_length_stay}}">
+    <input type="hidden" name="Room_availability_Maximum_length_stay" value="{{Room_availability_Maximum_length_stay}}">
+
+    <input type="hidden" name="room_Weekly_rent" value="{{room_Weekly_rent}}">
+    <input type="hidden" name="room_changed_Bond" value="{{room_changed_Bond}}">
+    <input type="hidden" name="room_changed_Bills" value="{{room_changed_Bills}}">
+
+
+    <input type="hidden" name="Bed_Size" value="{{Bed_Size}}">
+    <input type="hidden" name="Room_furnishings_features_Bed_side_table" value="{{Room_furnishings_features_Bed_side_table}}">
+    <input type="hidden" name="Room_furnishings_features_Wardrobe" value="{{Room_furnishings_features_Wardrobe}}">
+    <input type="hidden" name="Room_furnishings_features_Drawers" value="{{Room_furnishings_features_Drawers}}">
+    <input type="hidden" name="Room_furnishings_features_Air_conditioner" value="{{Room_furnishings_features_Air_conditioner}}">
+    <input type="hidden" name="Room_furnishings_features_Heater" value="{{Room_furnishings_features_Heater}}">
+    <input type="hidden" name="Room_furnishings_features_Desk" value="{{Room_furnishings_features_Desk}}">
+    <input type="hidden" name="Room_furnishings_features_Lamp" value="{{Room_furnishings_features_Lamp}}">
+    <input type="hidden" name="Room_furnishings_features_Chair" value="{{Room_furnishings_features_Chair}}">
+    <input type="hidden" name="Room_furnishings_features_Couch" value="{{Room_furnishings_features_Couch}}">
+    <input type="hidden" name="Room_furnishings_features_TV" value="{{Room_furnishings_features_TV}}">
+    <input type="hidden" name="Room_furnishings_features_Balcony" value="{{Room_furnishings_features_Balcony}}">
+    <input type="hidden" name="Room_furnishings_features_Door_lock" value="{{Room_furnishings_features_Door_lock}}">
+    <input type="hidden" name="Room_furnishings_features_Kitchenette" value="{{Room_furnishings_features_Kitchenette}}">
+
+
+
+    <input type="hidden" name="offering_accommodation" value="{{offering_accommodation}}">
+    <input type="hidden" name="property" value="{{property}}">
+
+    <input type="hidden" name="Room_name" value="{{Room_name}}">
+    <input type="hidden" name="Room_type" value="{{Room_type}}">
+    <input type="hidden" name="Room_furnishings" value="{{Room_furnishings}}">
+    <input type="hidden" name="Bathroom_type" value="{{Bathroom_type}}">
+    {% if property_Who_currently_lives %}
+    <input type="hidden" name="property_Who_currently_lives" value="{{property_Who_currently_lives}}">
+
+    {% endif %}
+
+
+
+
+
+
+<div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style=" margin-top: 23px;">
+
+    <div>
+          Property Address<br>
+        <input id="id_Property_Address" name="Property_Address" style="width: 100%;" onclick="lets_enable_star_button()" onkeyup="lets_enable_star_button()" value="{{Property_Address}}">
+
+    </div>
+
+          <div style="margin-top: 23px;">
+
+          <p style="font-size: 18px;">Total bedrooms</p>
+
+
+
+                 {% if property_bedrooms == '2' %}
+
+                <label onclick="lets_enable_star_button()" style="width: 20%;" >
+                  <input type="radio" name="property_bedrooms" value="2" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="3" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="4" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="5" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">5</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="6+" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">6+</p>
+                </label>
+
+              {% elif property_bedrooms == '3' %}
+              <label onclick="lets_enable_star_button()" style="width: 20%;" >
+                  <input type="radio" name="property_bedrooms" value="2" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="3" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="4" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="5" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">5</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="6+" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">6+</p>
+                </label>
+
+              {% elif property_bedrooms == '4' %}
+
+              <label onclick="lets_enable_star_button()" style="width: 20%;" >
+                  <input type="radio" name="property_bedrooms" value="2" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="3" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="4" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="5" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">5</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="6+" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">6+</p>
+                </label>
+
+              {% elif property_bedrooms == '5' %}
+
+              <label onclick="lets_enable_star_button()" style="width: 20%;" >
+                  <input type="radio" name="property_bedrooms" value="2" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="3" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="4" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="5"checked >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">5</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="6+" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">6+</p>
+                </label>
+              {% elif property_bedrooms == '6+' %}
+
+              <label onclick="lets_enable_star_button()" style="width: 20%;" >
+                  <input type="radio" name="property_bedrooms" value="2" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="3" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="4" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="5" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">5</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="6+" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">6+</p>
+                </label>
+
+                {% else %}
+
+              <label onclick="lets_enable_star_button()" style="width: 20%;" >
+                  <input type="radio" name="property_bedrooms" value="2" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="3" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="4" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="5" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">5</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 19%;">
+                  <input type="radio" name="property_bedrooms" value="6+" >
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">6+</p>
+                </label>
+
+                {% endif %}
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+    </div>
+
+
+
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style=" margin-top: 5px; width:100%">
+
+
+          <div style="margin-top: 23px;">
+
+          <p style="font-size: 18px;">Total bathrooms</p>
+
+              {% if property_bathrooms == '1' %}
+              <label onclick="lets_enable_star_button()" style="width: 24%;" >
+                  <input type="radio" name="property_bathrooms" value="1" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">1</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 25%;">
+                  <input type="radio" name="property_bathrooms" value="2">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;    text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="3">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="4+">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4+</p>
+                </label>
+
+              {% elif  property_bathrooms == '2' %}
+              <label onclick="lets_enable_star_button()" style="width: 24%;" >
+                  <input type="radio" name="property_bathrooms" value="1">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">1</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 25%;">
+                  <input type="radio" name="property_bathrooms" value="2" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;    text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="3">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="4+">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4+</p>
+                </label>
+
+              {% elif  property_bathrooms == '3' %}
+              <label onclick="lets_enable_star_button()" style="width: 24%;" >
+                  <input type="radio" name="property_bathrooms" value="1">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">1</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 25%;">
+                  <input type="radio" name="property_bathrooms" value="2">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;    text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="3" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="4+">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4+</p>
+                </label>
+
+
+              {% elif  property_bathrooms == '4+' %}
+              <label onclick="lets_enable_star_button()" style="width: 24%;" >
+                  <input type="radio" name="property_bathrooms" value="1">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">1</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 25%;">
+                  <input type="radio" name="property_bathrooms" value="2">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;    text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="3">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="4+" checked>
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4+</p>
+                </label>
+              {% else %}
+              <label onclick="lets_enable_star_button()" style="width: 24%;" >
+                  <input type="radio" name="property_bathrooms" value="1">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;   text-align: center;">1</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 25%;">
+                  <input type="radio" name="property_bathrooms" value="2">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid;    text-align: center;">2</p>
+                </label>
+
+            <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="3">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">3</p>
+                </label>
+
+              <label onclick="lets_enable_star_button()" style="width: 24%;">
+                  <input type="radio" name="property_bathrooms" value="4+">
+<!--                  <img src="{% static '' %}listing_imag/home_stay.PNG" >-->
+                    <p style="border: 2px solid; text-align: center;">4+</p>
+                </label>
+
+              {% endif %}
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style=" margin-top: 5px; width:100%">
+
+
+
+          {% if  changed_Parking == 'No parking' %}
+          <label class="bmd-label-floating">Parking</label><br>
+       <select name="changed_Parking" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">Select</option>
+            <option value="No parking" selected>No parking</option>
+            <option value="Off-street parking">Off-street parking</option>
+            <option value="On-street Parking">On-street Parking</option>
+
+        </select>
+
+          {% elif  changed_Parking == 'Off-street parking' %}
+
+          <label class="bmd-label-floating">Parking</label><br>
+       <select name="changed_Parking" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">Select</option>
+            <option value="No parking" selected>No parking</option>
+            <option value="Off-street parking" selected>Off-street parking</option>
+            <option value="On-street Parking">On-street Parking</option>
+
+        </select>
+
+          {% elif  changed_Parking == 'On-street Parking' %}
+        <label class="bmd-label-floating">Parking</label><br>
+       <select name="changed_Parking" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">Select</option>
+            <option value="No parking">No parking</option>
+            <option value="Off-street parking">Off-street parking</option>
+            <option value="On-street Parking" selected>On-street Parking</option>
+
+        </select>
+
+          {% else %}
+          <label class="bmd-label-floating">Parking</label><br>
+       <select name="changed_Parking" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">Select</option>
+            <option value="No parking">No parking</option>
+            <option value="Off-street parking">Off-street parking</option>
+            <option value="On-street Parking">On-street Parking</option>
+
+        </select>
+          {% endif %}
+
+
+
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+    </div>
+
+
+
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style=" margin-top: 5px; width:100%">
+
+        {% if  changed_Internet == 'No internet' %}
+          <label class="bmd-label-floating">Internet</label><br>
+       <select name="changed_Internet" id="carssw" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="" >Select</option>
+            <option value="No internet" selected>No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+
+        </select>
+        {% elif  changed_Internet == 'Available but not inc in rent' %}
+          <label class="bmd-label-floating">Internet</label><br>
+       <select name="changed_Internet" id="carssw" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="" >Select</option>
+            <option value="No internet">No internet</option>
+            <option value="Available but not inc in rent" selected>Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+
+        </select>
+        {% elif  changed_Internet == 'Included in rent' %}
+          <label class="bmd-label-floating">Internet</label><br>
+       <select name="changed_Internet" id="carssw" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="" >Select</option>
+            <option value="No internet">No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent" selected>Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+
+        </select>
+        {% elif  changed_Internet == 'Unlimited included in rent' %}
+          <label class="bmd-label-floating">Internet</label><br>
+       <select name="changed_Internet" id="carssw" class="selectpicker" onchange="lets_enable_star_button()" >
+            <option value="" >Select</option>
+            <option value="No internet">No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent" selected>Unlimited included in rent</option>
+
+        </select>
+          {% else %}
+          <label class="bmd-label-floating">Internet</label><br>
+       <select name="changed_Internet" id="carssw" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="" >Select</option>
+            <option value="No internet">No internet</option>
+            <option value="Available but not inc in rent">Available but not inc in rent</option>
+            <option value="Included in rent">Included in rent</option>
+            <option value="Unlimited included in rent">Unlimited included in rent</option>
+
+        </select>
+          {% endif %}
+
+
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+                  <div id="start_button_enable" style="width: 23%;margin-top: 40px;margin-left: 38%;border-radius: 11px 11px 11px 11px;background-color: turquoise;text-align: center;">
+<!--                      <button type="submit">Start</button>-->
+                      <button type="submit" style="background-color: unset; width: 88%;" disabled>Start</button>
+                    </div>
+
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</form>
+
+
+<form action="{% url 'flatmate_listing_place_start' %}" method="POST">{% csrf_token %}
+<div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+
+
+    <input type="hidden" name="introduce_great_about_living" value="{{introduce_great_about_living}}">
+    <input type="hidden" name="introduce_about_your_flatmates" value="{{introduce_about_your_flatmates}}">
+
+    <input type="hidden" name="Accepting_Backpackers" value="{{Accepting_Backpackers}}">
+    <input type="hidden" name="Accepting_Students" value="{{Accepting_Students}}">
+    <input type="hidden" name="Accepting_Smokers" value="{{Accepting_Smokers}}">
+    <input type="hidden" name="Accepting_LGBTI" value="{{Accepting_LGBTI}}">
+    <input type="hidden" name="Accepting_years_olds" value="{{Accepting_years_olds}}">
+    <input type="hidden" name="Accepting_Children" value="{{Accepting_Children}}">
+    <input type="hidden" name="Accepting_Pets" value="{{Accepting_Pets}}">
+    <input type="hidden" name="Accepting_Retirees" value="{{Accepting_Retirees}}">
+    <input type="hidden" name="Accepting_On_welfare" value="{{Accepting_On_welfare}}">
+
+
+    <input type="hidden" name="Flatmate_Preference_name" value="{{Flatmate_Preference_name}}">
+
+    <input type="hidden" name="image_id" value="{{image_id}}">
+
+    <input type="hidden" name="Room_availability_Date" value="{{Room_availability_Date}}">
+    <input type="hidden" name="Room_availability_Minimum_length_stay" value="{{Room_availability_Minimum_length_stay}}">
+    <input type="hidden" name="Room_availability_Maximum_length_stay" value="{{Room_availability_Maximum_length_stay}}">
+
+    <input type="hidden" name="room_Weekly_rent" value="{{room_Weekly_rent}}">
+    <input type="hidden" name="room_changed_Bond" value="{{room_changed_Bond}}">
+    <input type="hidden" name="room_changed_Bills" value="{{room_changed_Bills}}">
+
+
+    <input type="hidden" name="Bed_Size" value="{{Bed_Size}}">
+    <input type="hidden" name="Room_furnishings_features_Bed_side_table" value="{{Room_furnishings_features_Bed_side_table}}">
+    <input type="hidden" name="Room_furnishings_features_Wardrobe" value="{{Room_furnishings_features_Wardrobe}}">
+    <input type="hidden" name="Room_furnishings_features_Drawers" value="{{Room_furnishings_features_Drawers}}">
+    <input type="hidden" name="Room_furnishings_features_Air_conditioner" value="{{Room_furnishings_features_Air_conditioner}}">
+    <input type="hidden" name="Room_furnishings_features_Heater" value="{{Room_furnishings_features_Heater}}">
+    <input type="hidden" name="Room_furnishings_features_Desk" value="{{Room_furnishings_features_Desk}}">
+    <input type="hidden" name="Room_furnishings_features_Lamp" value="{{Room_furnishings_features_Lamp}}">
+    <input type="hidden" name="Room_furnishings_features_Chair" value="{{Room_furnishings_features_Chair}}">
+    <input type="hidden" name="Room_furnishings_features_Couch" value="{{Room_furnishings_features_Couch}}">
+    <input type="hidden" name="Room_furnishings_features_TV" value="{{Room_furnishings_features_TV}}">
+    <input type="hidden" name="Room_furnishings_features_Balcony" value="{{Room_furnishings_features_Balcony}}">
+    <input type="hidden" name="Room_furnishings_features_Door_lock" value="{{Room_furnishings_features_Door_lock}}">
+    <input type="hidden" name="Room_furnishings_features_Kitchenette" value="{{Room_furnishings_features_Kitchenette}}">
+
+
+
+    <input type="hidden" name="offering_accommodation" value="{{offering_accommodation}}">
+    <input type="hidden" name="property" value="{{property}}">
+
+    <input type="hidden" name="Room_name" value="{{Room_name}}">
+    <input type="hidden" name="Room_type" value="{{Room_type}}">
+    <input type="hidden" name="Room_furnishings" value="{{Room_furnishings}}">
+    <input type="hidden" name="Bathroom_type" value="{{Bathroom_type}}">
+
+    <input type="hidden" name="Property_Address" value="{{Property_Address}}">
+    <input type="hidden" name="property_bedrooms" value="{{property_bedrooms}}">
+    <input type="hidden" name="property_bathrooms" value="{{property_bathrooms}}">
+    <input type="hidden" name="changed_Parking" value="{{changed_Parking}}">
+    <input type="hidden" name="changed_Internet" value="{{changed_Internet}}">
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+          <div style="width: 23%;margin-top: 34px;margin-left: 38%;border-radius: 11px 11px 11px 11px;background-color: #e0408675;text-align: center;">
+
+              <button type="submit">Back</button>
+            </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+</div>
+
+
+</form>
+
+
+
+
+
+         <script src="{% static '' %}js/jquery.min.js"></script>
+          <script src="{% static '' %}js/popper.min.js"></script>
+          <script src="{% static '' %}js/bootstrap.bundle.min.js"></script>
+          <script src="{% static '' %}js/jquery-3.0.0.min.js"></script>
+          <script src="{% static '' %}js/plugin.js"></script>
+          <!-- sidebar -->
+          <script src="{% static '' %}js/jquery.mCustomScrollbar.concat.min.js"></script>
+          <script src="{% static '' %}js/custom.js"></script>
+          <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<!--document.getElementById('carssw').value-->
+
+
+<script>
+    var submit_value = '{{property_bedrooms}}'
+    console.log('submit_value')
+    console.log(submit_value)
+
+    var get_radio = document.getElementById('bedroom' + submit_value);
+    console.log(get_radio)
+
+    get_radio.checked = this.checked;
+	console.log(get_radio.checked)
+
+</script>
+
+
+
+
+
+
+<script>
+function lets_enable_star_button(){
+
+
+var Property_Address_input = document.getElementById('id_Property_Address').value
+
+var property_bedrooms_value = document.querySelector('input[name="property_bedrooms"]:checked').value;
+var property_bathrooms_value = document.querySelector('input[name="property_bathrooms"]:checked').value;
+
+var parking_value = document.getElementById('carss').value
+var Internet_value = document.getElementById('carssw').value
+
+if(Internet_value && parking_value && Property_Address_input && property_bedrooms_value && property_bathrooms_value){
+console.log('HI man')
+
+document.getElementById('start_button_enable').innerHTML='<button type="submit" style="background-color: unset; width: 88%;">Start</button>';
+
+}
+else{
+console.log('HI man')
+
+document.getElementById('start_button_enable').innerHTML='<button type="submit" style="background-color: unset; width: 88%;" disabled>Start</button>';
+
+}
+
+
+
+
+ }
+
+</script>
+
+
+
+
+
+<script>
+lets_enable_star_button()
+function lets_enable_star_button(){
+
+
+var Property_Address_input = document.getElementById('id_Property_Address').value
+
+var property_bedrooms_value = document.querySelector('input[name="property_bedrooms"]:checked').value;
+var property_bathrooms_value = document.querySelector('input[name="property_bathrooms"]:checked').value;
+
+var parking_value = document.getElementById('carss').value
+var Internet_value = document.getElementById('carssw').value
+
+if(Internet_value && parking_value && Property_Address_input && property_bedrooms_value && property_bathrooms_value){
+console.log('HI man')
+
+document.getElementById('start_button_enable').innerHTML='<button type="submit" style="background-color: unset; width: 88%;">Start</button>';
+
+}
+else{
+console.log('HI man')
+
+document.getElementById('start_button_enable').innerHTML='<button type="submit" style="background-color: unset; width: 88%;" disabled>Start</button>';
+
+}
+
+
+
+
+ }
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

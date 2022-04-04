@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>mind</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- fevicon -->
+  <link rel="icon" href="{% static '' %}images/fevicon.png" type="image/gif" />
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="{% static '' %}css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="{% static '' %}css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="{% static '' %}css/responsive.css">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="{% static '' %}css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+<style>
+
+    /* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #0ee9a6;
+  border-radius: 19px;
+}
+
+[type=radio]:checked + p {
+  outline: 2px solid #0ee9a6;
+  border-radius: 19px;
+}
+
+</style>
+
+
+
+    <style>
+        select.selectpicker {
+    display: none;
+
+    /* Prevent FOUC */
+}
+    </style>
+
+
+</head>
+<!-- body -->
+
+<body>
+
+<div class="row" style="background-color: turquoise; text-align: center; height: 40px; font-size: 18px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">wanted to close </div>
+<!--      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><i class="fa fa-window-close" aria-hidden="true"></i></div>-->
+</div>
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" style=" margin-top: 23px;">
+
+          <p>YOUR IDEAL FLATEMATE(S)</p>
+          <p style="font-size: 24px;">Flatmate Preference</p>
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+    </div>
+  </div>
+
+
+
+<form action="{% url 'Flatmate_Preference' %}" method="POST">{% csrf_token %}
+
+    <input type="hidden" name="introduce_about_your_flatmates" value="{{introduce_about_your_flatmates}}">
+
+     <input type="hidden" name="introduce_great_about_living" value="{{introduce_great_about_living}}">
+
+
+
+    <input type="hidden" name="Accepting_Backpackers" value="{{Accepting_Backpackers}}">
+    <input type="hidden" name="Accepting_Students" value="{{Accepting_Students}}">
+    <input type="hidden" name="Accepting_Smokers" value="{{Accepting_Smokers}}">
+    <input type="hidden" name="Accepting_LGBTI" value="{{Accepting_LGBTI}}">
+    <input type="hidden" name="Accepting_years_olds" value="{{Accepting_years_olds}}">
+    <input type="hidden" name="Accepting_Children" value="{{Accepting_Children}}">
+    <input type="hidden" name="Accepting_Pets" value="{{Accepting_Pets}}">
+    <input type="hidden" name="Accepting_Retirees" value="{{Accepting_Retirees}}">
+    <input type="hidden" name="Accepting_On_welfare" value="{{Accepting_On_welfare}}">
+
+
+
+
+    <input type="hidden" name="image_id" value="{{image_id}}">
+
+    <input type="hidden" name="Room_availability_Date" value="{{Room_availability_Date}}">
+    <input type="hidden" name="Room_availability_Minimum_length_stay" value="{{Room_availability_Minimum_length_stay}}">
+    <input type="hidden" name="Room_availability_Maximum_length_stay" value="{{Room_availability_Maximum_length_stay}}">
+
+    <input type="hidden" name="room_Weekly_rent" value="{{room_Weekly_rent}}">
+    <input type="hidden" name="room_changed_Bond" value="{{room_changed_Bond}}">
+    <input type="hidden" name="room_changed_Bills" value="{{room_changed_Bills}}">
+    <input type="hidden" name="Bed_Size" value="{{Bed_Size}}">
+    <input type="hidden" name="Room_furnishings_features_Bed_side_table" value="{{Room_furnishings_features_Bed_side_table}}">
+    <input type="hidden" name="Room_furnishings_features_Wardrobe" value="{{Room_furnishings_features_Wardrobe}}">
+    <input type="hidden" name="Room_furnishings_features_Drawers" value="{{Room_furnishings_features_Drawers}}">
+    <input type="hidden" name="Room_furnishings_features_Air_conditioner" value="{{Room_furnishings_features_Air_conditioner}}">
+    <input type="hidden" name="Room_furnishings_features_Heater" value="{{Room_furnishings_features_Heater}}">
+    <input type="hidden" name="Room_furnishings_features_Desk" value="{{Room_furnishings_features_Desk}}">
+    <input type="hidden" name="Room_furnishings_features_Lamp" value="{{Room_furnishings_features_Lamp}}">
+    <input type="hidden" name="Room_furnishings_features_Chair" value="{{Room_furnishings_features_Chair}}">
+    <input type="hidden" name="Room_furnishings_features_Couch" value="{{Room_furnishings_features_Couch}}">
+    <input type="hidden" name="Room_furnishings_features_TV" value="{{Room_furnishings_features_TV}}">
+    <input type="hidden" name="Room_furnishings_features_Balcony" value="{{Room_furnishings_features_Balcony}}">
+    <input type="hidden" name="Room_furnishings_features_Door_lock" value="{{Room_furnishings_features_Door_lock}}">
+    <input type="hidden" name="Room_furnishings_features_Kitchenette" value="{{Room_furnishings_features_Kitchenette}}">
+    <input type="hidden" name="Room_name" value="{{Room_name}}">
+    <input type="hidden" name="Room_type" value="{{Room_type}}">
+    <input type="hidden" name="Room_furnishings" value="{{Room_furnishings}}">
+    <input type="hidden" name="Bathroom_type" value="{{Bathroom_type}}">
+    <input type="hidden" name="property_Who_currently_lives" value="{{property_Who_currently_lives}}">
+    <input type="hidden" name="Property_Address" value="{{Property_Address}}">
+    <input type="hidden" name="property_bedrooms" value="{{property_bedrooms}}">
+    <input type="hidden" name="property_bathrooms" value="{{property_bathrooms}}">
+    <input type="hidden" name="changed_Parking" value="{{changed_Parking}}">
+    <input type="hidden" name="changed_Internet" value="{{changed_Internet}}">
+    <input type="hidden" name="offering_accommodation" value="{{offering_accommodation}}">
+    <input type="hidden" name="property" value="{{property}}">
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style=" margin-top: 5px; width:100%">
+
+
+
+        <label class="bmd-label-floating">Flatmate Preference</label><br>
+
+
+          {% if Flatmate_Preference_name == 'Anyone' %}
+          <select name="Flatmate_Preference_name" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">choose</option>
+            <option value="Anyone" selected>Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+
+        </select>
+          {% elif Flatmate_Preference_name == 'Women only' %}
+          <select name="Flatmate_Preference_name" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">choose</option>
+            <option value="Anyone">Anyone</option>
+            <option value="Women only" selected>Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+
+        </select>
+          {% elif Flatmate_Preference_name == 'Men only' %}
+          <select name="Flatmate_Preference_name" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">choose</option>
+            <option value="Anyone">Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only" selected>Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+
+        </select>
+          {% elif Flatmate_Preference_name == 'No couples' %}
+          <select name="Flatmate_Preference_name" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">choose</option>
+            <option value="Anyone">Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples" selected>No couples</option>
+            <option value="Couple">Couple</option>
+
+        </select>
+          {% elif Flatmate_Preference_name == 'Couple' %}
+          <select name="Flatmate_Preference_name" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">choose</option>
+            <option value="Anyone">Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple" selected>Couple</option>
+
+        </select>
+
+          {% else %}
+          <select name="Flatmate_Preference_name" id="carss" class="selectpicker" onchange="lets_enable_star_button()">
+            <option value="">choose</option>
+            <option value="Anyone">Anyone</option>
+            <option value="Women only">Women only</option>
+            <option value="Men only">Men only</option>
+            <option value="No couples">No couples</option>
+            <option value="Couple">Couple</option>
+
+        </select>
+          {% endif %}
+
+
+
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+              <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+                  <div id="start_button_enable" style="width: 23%;margin-top: 40px;margin-left: 38%;border-radius: 11px 11px 11px 11px;background-color: turquoise;text-align: center;">
+<!--                      <button type="submit">Start</button>-->
+                      <button type="submit" style="background-color: unset; width: 88%;" disabled>Start</button>
+                    </div>
+
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+        </div>
+
+</form>
+
+
+<form action="{% url 'flatmate_listing_place_Property_room_images' %}" method="POST">{% csrf_token %}
+<div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+      <input type="hidden" name="introduce_great_about_living" value="{{introduce_great_about_living}}">
+
+     <input type="hidden" name="introduce_about_your_flatmates" value="{{introduce_about_your_flatmates}}">
+
+
+     <input type="hidden" name="Accepting_Backpackers" value="{{Accepting_Backpackers}}">
+    <input type="hidden" name="Accepting_Students" value="{{Accepting_Students}}">
+    <input type="hidden" name="Accepting_Smokers" value="{{Accepting_Smokers}}">
+    <input type="hidden" name="Accepting_LGBTI" value="{{Accepting_LGBTI}}">
+    <input type="hidden" name="Accepting_years_olds" value="{{Accepting_years_olds}}">
+    <input type="hidden" name="Accepting_Children" value="{{Accepting_Children}}">
+    <input type="hidden" name="Accepting_Pets" value="{{Accepting_Pets}}">
+    <input type="hidden" name="Accepting_Retirees" value="{{Accepting_Retirees}}">
+    <input type="hidden" name="Accepting_On_welfare" value="{{Accepting_On_welfare}}">
+
+
+    <input type="hidden" name="Flatmate_Preference_name" value="{{Flatmate_Preference_name}}">
+
+    <input type="hidden" name="image_id" value="{{image_id}}">
+
+    <input type="hidden" name="Room_availability_Date" value="{{Room_availability_Date}}">
+    <input type="hidden" name="Room_availability_Minimum_length_stay" value="{{Room_availability_Minimum_length_stay}}">
+    <input type="hidden" name="Room_availability_Maximum_length_stay" value="{{Room_availability_Maximum_length_stay}}">
+
+    <input type="hidden" name="room_Weekly_rent" value="{{room_Weekly_rent}}">
+    <input type="hidden" name="room_changed_Bond" value="{{room_changed_Bond}}">
+    <input type="hidden" name="room_changed_Bills" value="{{room_changed_Bills}}">
+    <input type="hidden" name="Bed_Size" value="{{Bed_Size}}">
+    <input type="hidden" name="Room_furnishings_features_Bed_side_table" value="{{Room_furnishings_features_Bed_side_table}}">
+    <input type="hidden" name="Room_furnishings_features_Wardrobe" value="{{Room_furnishings_features_Wardrobe}}">
+    <input type="hidden" name="Room_furnishings_features_Drawers" value="{{Room_furnishings_features_Drawers}}">
+    <input type="hidden" name="Room_furnishings_features_Air_conditioner" value="{{Room_furnishings_features_Air_conditioner}}">
+    <input type="hidden" name="Room_furnishings_features_Heater" value="{{Room_furnishings_features_Heater}}">
+    <input type="hidden" name="Room_furnishings_features_Desk" value="{{Room_furnishings_features_Desk}}">
+    <input type="hidden" name="Room_furnishings_features_Lamp" value="{{Room_furnishings_features_Lamp}}">
+    <input type="hidden" name="Room_furnishings_features_Chair" value="{{Room_furnishings_features_Chair}}">
+    <input type="hidden" name="Room_furnishings_features_Couch" value="{{Room_furnishings_features_Couch}}">
+    <input type="hidden" name="Room_furnishings_features_TV" value="{{Room_furnishings_features_TV}}">
+    <input type="hidden" name="Room_furnishings_features_Balcony" value="{{Room_furnishings_features_Balcony}}">
+    <input type="hidden" name="Room_furnishings_features_Door_lock" value="{{Room_furnishings_features_Door_lock}}">
+    <input type="hidden" name="Room_furnishings_features_Kitchenette" value="{{Room_furnishings_features_Kitchenette}}">
+    <input type="hidden" name="Room_name" value="{{Room_name}}">
+    <input type="hidden" name="Room_type" value="{{Room_type}}">
+    <input type="hidden" name="Room_furnishings" value="{{Room_furnishings}}">
+    <input type="hidden" name="Bathroom_type" value="{{Bathroom_type}}">
+    <input type="hidden" name="property_Who_currently_lives" value="{{property_Who_currently_lives}}">
+    <input type="hidden" name="Property_Address" value="{{Property_Address}}">
+    <input type="hidden" name="property_bedrooms" value="{{property_bedrooms}}">
+    <input type="hidden" name="property_bathrooms" value="{{property_bathrooms}}">
+    <input type="hidden" name="changed_Parking" value="{{changed_Parking}}">
+    <input type="hidden" name="changed_Internet" value="{{changed_Internet}}">
+    <input type="hidden" name="offering_accommodation" value="{{offering_accommodation}}">
+    <input type="hidden" name="property" value="{{property}}">
+
+
+
+
+
+
+
+
+          <div style="width: 23%;margin-top: 34px;margin-left: 38%;border-radius: 11px 11px 11px 11px;background-color: #e0408675;text-align: center;">
+
+              <button  type="submit">Back</button>
+
+            </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"></div>
+</div>
+
+</form>
+
+
+
+
+
+
+         <script src="{% static '' %}js/jquery.min.js"></script>
+          <script src="{% static '' %}js/popper.min.js"></script>
+          <script src="{% static '' %}js/bootstrap.bundle.min.js"></script>
+          <script src="{% static '' %}js/jquery-3.0.0.min.js"></script>
+          <script src="{% static '' %}js/plugin.js"></script>
+          <!-- sidebar -->
+          <script src="{% static '' %}js/jquery.mCustomScrollbar.concat.min.js"></script>
+          <script src="{% static '' %}js/custom.js"></script>
+          <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+
+<!--document.getElementById('carssw').value-->
+
+<script>
+lets_enable_star_button()
+function lets_enable_star_button(){
+
+
+
+
+
+var parking_value = document.getElementById('carss').value
+
+
+if(parking_value){
+console.log('HI man')
+
+document.getElementById('start_button_enable').innerHTML='<button type="submit" style="background-color: unset; width: 88%;">Start</button>';
+
+}
+else{
+console.log('HI man')
+
+document.getElementById('start_button_enable').innerHTML='<button type="submit" style="background-color: unset; width: 88%;" disabled>Start</button>';
+
+}
+
+
+
+
+ }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

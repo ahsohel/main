@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+<div class="row" style="margin-top: 50px;">
+{% for i in the_list %}
+
+<div class="col-md-4 col-lg-4" style=" padding: 15px;">
+
+    <div class="grid-margin stretch-card" >
+                    <div class="card" style="height: 265px;background-color: #d5d3d0;margin-bottom: 15px;width: 100%;">
+                        <div class="card-body">
+
+
+    <div style="text-align: center;">
+        <img src="{{ i.model_Property_and_room_images_1.first.model_Property_and_room_images_1.url }}" height="330px" width="330px" style="width: 100%;height: 100%;"/>
+
+    </div>
+
+       {{i.model_Property_Address}}
+       ID:{{i.id}}
+<!--       {{i.List_create_date|date:"M d, Y" }}-->
+<!--       {{i.List_create_date|date:'Y-m-d' }}<br>-->
+<!--       {{i.List_create_date|time:"h:i a" }}<br><br>-->
+<!--    dsdd-->
+<!--    {{current_date}}-->
+<!--    dsdd-->
+
+<br>
+    {% if i.Can_edit_or_not == 'Can_Edit' %}
+        <a class="btn btn-primary" href="{% url 'go_to_edit_list' i.id %}">Click To Edit</a>
+    {% endif %}
+
+        <a class="btn btn-primary" href="{% url 'go_to_delete_list' i.id %}" style="position: relative; float: right;">Click To Delete</a>
+
+
+
+</div>
+
+
+
+</div>
+                    </div>
+                </div>
+
+{% endfor %}
+</div>
+
+
+
+
+<script type='text/javascript'>
+
+(function()
+{
+  if( window.localStorage )
+  {
+    if( !localStorage.getItem('firstLoad') )
+    {
+      localStorage['firstLoad'] = true;
+      window.location.reload();
+    }
+    else
+      localStorage.removeItem('firstLoad');
+  }
+})();
+
+</script>
+{% endblock %}

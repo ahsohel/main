@@ -1,0 +1,308 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+
+
+<style>
+
+
+    .thoo:hover{
+        border: 1px solid #686868;
+
+    }
+
+</style>
+
+
+
+<form action="{% url 'let_save_edited_image_and_get_back' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+
+
+count of image: {{count_image}}
+
+<div class="row">
+        {% for j in the_edit_able_row_for_image.model_Property_and_room_images_1.all %}
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <span onclick="delete_image_from_edit('{{j.id}}')" style="position: absolute; float: right; background-color: #ff0028;  width: 23px;  text-align: center;  color: white;">x</span>
+            <img class="thoo" src="{{ j.model_Property_and_room_images_1.url }}" style="height: 100%; width: 100%;"/>{{j.id}}
+        </div>
+        {% endfor %}
+            <input type="hidden" name="get_the_list_id_for_image" value="{{j.id}}">
+
+    </div>
+
+{% if count_image == 0 %}
+<br>
+<br>
+you can upload 5 image
+
+
+<table>
+
+  <tr>
+    <td><input type="file" name="image_1_get_for" onchange="readURL_1(this);"></td>
+    <td><img id="blah_1" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_2_get_for" onchange="readURL_2(this);"></td>
+    <td><img id="blah_2" src="#" alt="your image" /></td>
+  </tr>
+    <tr>
+    <td><input type="file" name="image_3_get_for" onchange="readURL_3(this);"></td>
+    <td><img id="blah_3" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_4_get_for" onchange="readURL_4(this);"></td>
+    <td><img id="blah_4" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_5_get_for" onchange="readURL_5(this);"></td>
+    <td><img id="blah_5" src="#" alt="your image" /></td>
+  </tr>
+</table>
+
+
+
+
+
+
+{% elif count_image == 1 %}
+<br>
+<br>
+you can upload 4 more image
+
+<table>
+
+  <tr>
+    <td><input type="file" name="image_1_get_for" onchange="readURL_1(this);"></td>
+    <td><img id="blah_1" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_2_get_for" onchange="readURL_2(this);"></td>
+    <td><img id="blah_2" src="#" alt="your image" /></td>
+  </tr>
+    <tr>
+    <td><input type="file" name="image_3_get_for" onchange="readURL_3(this);"></td>
+    <td><img id="blah_3" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_4_get_for" onchange="readURL_4(this);"></td>
+    <td><img id="blah_4" src="#" alt="your image" /></td>
+  </tr>
+
+</table>
+
+
+
+
+{% elif count_image == 2 %}
+<br>
+<br>
+you can upload 3 more image
+
+<table>
+
+  <tr>
+    <td><input type="file" name="image_1_get_for" onchange="readURL_1(this);"></td>
+    <td><img id="blah_1" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_2_get_for" onchange="readURL_2(this);"></td>
+    <td><img id="blah_2" src="#" alt="your image" /></td>
+  </tr>
+    <tr>
+    <td><input type="file" name="image_3_get_for" onchange="readURL_3(this);"></td>
+    <td><img id="blah_3" src="#" alt="your image" /></td>
+  </tr>
+
+</table>
+
+
+
+
+{% elif count_image == 3 %}
+<br>
+<br>
+you can upload 2 more image
+<table>
+
+  <tr>
+    <td><input type="file" name="image_1_get_for" onchange="readURL_1(this);"></td>
+    <td><img id="blah_1" src="#" alt="your image" /></td>
+  </tr>
+  <tr>
+    <td><input type="file" name="image_2_get_for" onchange="readURL_2(this);"></td>
+    <td><img id="blah_2" src="#" alt="your image" /></td>
+  </tr>
+
+
+</table>
+
+{% elif count_image == 4 %}
+<br>
+<br>
+you can upload 1 more image
+<table>
+
+  <tr>
+    <td><input type="file" name="image_1_get_for" onchange="readURL_1(this);"></td>
+    <td><img id="blah_1" src="#" alt="your image" /></td>
+  </tr>
+
+
+</table>
+
+
+
+{% elif count_image == 5 %}
+<br>
+<br>
+you can not upload image
+{% endif %}
+
+
+<input type="hidden" name="get_the_main_row_id" value="{{the_edit_able_row_for_image.id}}">{{the_edit_able_row_for_image.id}}
+
+<button type="submit">Save and back</button>
+
+</form>
+
+
+
+<script>
+
+function reload_func(){
+        //location.reload()
+        setTimeout("location.reload(true);", 500);
+    }
+
+
+
+    function delete_image_from_edit(l){
+
+    console.log('l')
+    console.log(l)
+
+
+    $.ajax({
+            url : '{% url 'lets_delete_the_image_from_edit_option' %}',
+            type : 'POST',
+            data : {l:l}
+        })
+        .done(function(response){
+        console.log(response)
+        reload_func()
+
+        })
+
+
+
+
+    }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+    function readURL_1(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah_1')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    function readURL_2(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah_2')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    function readURL_3(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah_3')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    function readURL_4(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah_4')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<script>
+    function readURL_5(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah_5')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+
+
+
+
+{% endblock %}

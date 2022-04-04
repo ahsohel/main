@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+
+
+<form action="{% url 'save_the_edited_part' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+
+<div class="row" style="margin-top: 50px;">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        {% if the_user.User_photo %}
+            <img src="{{the_user.User_photo.url}}" id="blah">
+        {% else %}
+            <img src="{% static '' %}images/no_profile_pic.PNG" id="blah">
+        {% endif %}
+        <input style="margin-bottom: 13px;  margin-top: 13px;" name="Edited_Property_and_room_images_1" type='file' onchange="readURL(this);" />
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<!--        Name:-->
+<!--        <input name="Edited_user_name" value="{{the_user.User_name}}">-->
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Name:</span>
+          </div>
+          <input name="Edited_user_name" value="{{the_user.User_name}}" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<!--        Number:-->
+
+<!--        <input name="Edited_User_Number" value="{{the_user.User_Number}}">-->
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon2">Number:</span>
+          </div>
+          <input name="Edited_User_Number" value="{{the_user.User_Number}}" type="text" class="form-control" placeholder="Number" aria-label="Username" aria-describedby="basic-addon2">
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+<!--        Email:-->
+<!--        <input name="Edited_User_Email" value="{{the_user.User_Email}}">-->
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Email:</span>
+          </div>
+          <input name="Edited_User_Email" value="{{the_user.User_Email}}" type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon3">
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        Join Date:
+        {{the_user.Joined_Date}}
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="background-color: #ebebeb;margin-bottom: 13px;">
+        <span style="color: #bb6666;">If you wanted to change the password, then write the new password else leave it:</span>
+
+        <div id="sow_pas">
+<!--            <input type="password" name="Edited_password" value="{{the_user.User_Password}}" id="sow_pas1">-->
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Password</span>
+              </div>
+              <input type="password" name="Edited_password" value="{{the_user.User_Password}}" id="sow_pas1" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="show_password()"><i class="fa fa-eye" style="font-size:24px"></i></span>
+              </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align: center;">
+        <button type="submit" class="btn btn-primary">Save the change</button>
+        
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+</div>
+
+
+</form>
+
+
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+<script>
+var i =0;
+    function show_password(){
+    i = i+1
+        if (i%2 == 0){
+            console.log('evan')
+            document.getElementById('sow_pas1').type=`password`
+        }
+        else{
+            console.log('odd')
+            document.getElementById('sow_pas1').type=`text`
+        }
+    }
+
+
+
+
+</script>
+
+{% endblock %}

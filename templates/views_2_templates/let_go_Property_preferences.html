@@ -1,0 +1,208 @@
+{% extends 'base_2.html' %}
+{% load static %}
+{% block body %}
+
+
+
+<style>
+
+    /* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #0ee9a6;
+  border-radius: 19px;
+}
+
+[type=radio]:checked + p {
+  outline: 2px solid #0ee9a6;
+    border-radius: 19px;
+    background-color: turquoise;
+    color: white;
+}
+
+</style>
+
+
+
+
+<h6>YOUR IDEAL PLACE</h6>
+
+<h1>Property preferences</h1>
+
+
+
+
+
+<form action="{% url 'lets_go_for_step_2' %}" method="POST">{% csrf_token %}
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <input type="hidden" name="finder_Weekly_budget" value="{{finder_Weekly_budget}}">
+        <input type="hidden" name="finder_Preferred_move_date" value="{{finder_Preferred_move_date}}">
+        <input type="hidden" name="finder_Preferred_length_of_stay" value="{{finder_Preferred_length_of_stay}}">
+
+        <input type="hidden" name="subberb_tags" value="{{subberb_tags}}">
+
+        <input type="hidden" name="finder_Room_in_an_existing_sharehouse" value="{{finder_Room_in_an_existing_sharehouse}}">
+        <input type="hidden" name="finder_Whole_property_for_rent" value="{{finder_Whole_property_for_rent}}">
+        <input type="hidden" name="finder_Studio" value="{{finder_Studio}}">
+        <input type="hidden" name="finder_Granny_flats" value="{{finder_Granny_flats}}">
+        <input type="hidden" name="finder_One_bed_flat" value="{{finder_One_bed_flat}}">
+        <input type="hidden" name="finder_Homestay" value="{{finder_Homestay}}">
+        <input type="hidden" name="finder_Shared_Room" value="{{finder_Shared_Room}}">
+        <input type="hidden" name="finder_Student_Accommondation" value="{{finder_Student_Accommondation}}">
+
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="width: 100%;">
+        <p style="font-size: 18px;">Room furnishings</p>
+        <div style="margin-top: 23px;text-align: center;">
+
+             <label  style="width:34%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Room_furnishings" value="Flexible">
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Flexible</p>
+                </label>
+
+            <label style="width:32%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Room_furnishings" value="Not required" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Not required</p>
+            </label>
+
+            <label   style="width:30%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Room_furnishings" value="Required" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Required</p>
+            </label>
+
+        </div>
+
+
+        <p style="font-size: 18px;">Internet</p>
+        <div style="margin-top: 23px;text-align: center;">
+
+             <label  style="width: 49%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Internet" value="Flexible">
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Flexible</p>
+                </label>
+
+            <label   style="width: 47%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Internet" value="Required" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Required</p>
+            </label>
+
+        </div>
+
+
+
+
+        <p style="font-size: 18px;">Bathroom type</p>
+        <div style="margin-top: 23px;text-align: center;">
+
+             <label  style="width: 31%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Bathroom_type" value="Flexible">
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Flexible</p>
+                </label>
+
+            <label  style="width: 64%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Bathroom_type" value="Ensuite or own required" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Ensuite or own required</p>
+            </label>
+
+        </div>
+
+
+        <p style="font-size: 18px;">Parking</p>
+        <div style="margin-top: 23px;text-align: center;">
+
+             <label style="width: 50%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Parking" value="Flexible">
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Flexible</p>
+                </label>
+
+            <label  style="width: 47%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Parking" value="Off-street required" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Off-street required</p>
+            </label>
+
+        </div>
+
+
+        <p style="font-size: 18px;">Max number of flatmates</p>
+        <div style="margin-top: 23px;text-align: center;">
+
+             <label style="width: 33%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Max_number_of_flatmates" value="Flexible">
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">Flexible</p>
+                </label>
+
+            <label  style="width: 33%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Max_number_of_flatmates" value="1 other" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">1 other</p>
+            </label>
+
+            <label  style="width: 30%;" onclick="check_is_the_value_present()">
+                  <input type="radio" name="finder_Max_number_of_flatmates" value="2 other" >
+                  <p style="border: 2px solid;text-align: center;padding: 5px;">2 other</p>
+            </label>
+
+        </div>
+
+<div style="text-align: center;" id="the_button">
+<button type="submit" class="btn btn-primary" disabled>Save and Next</button>
+</div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"></div>
+
+
+</div>
+
+
+
+</form>
+
+
+
+
+
+
+<script>
+    function check_is_the_value_present(){
+        console.log('ssssssssss')
+        var d_finder_Room_furnishings = document.querySelector('input[name="finder_Room_furnishings"]:checked').value;
+        var d_finder_Internet = document.querySelector('input[name="finder_Internet"]:checked').value;
+        var d_finder_Bathroom_type = document.querySelector('input[name="finder_Bathroom_type"]:checked').value;
+        var d_finder_Parking = document.querySelector('input[name="finder_Parking"]:checked').value;
+        var d_finder_Max_number_of_flatmates = document.querySelector('input[name="finder_Max_number_of_flatmates"]:checked').value;
+
+
+        if(d_finder_Room_furnishings && d_finder_Internet && d_finder_Bathroom_type && d_finder_Parking && d_finder_Max_number_of_flatmates){
+            document.getElementById('the_button').innerHTML = `<button type="submit" class="btn btn-primary">Save and Next</button>`
+        }
+
+        else{
+            document.getElementById('the_button').innerHTML = `<button type="submit" class="btn btn-primary" disabled>Save and Next</button>`
+        }
+
+
+
+    }
+
+
+</script>
+
+
+
+{% endblock %}

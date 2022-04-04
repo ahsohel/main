@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body %}
+
+<div class="row" style="margin-top: 50px;">
+
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5" style="margin: 15px;background-color: #cbf3ed;text-align: center;padding: 8px;border-radius: 18px 18px 18px 18px;">
+        <a href="{% url 'flatmate_listing' %}">
+        <p>I need a flatmate</p>
+        <p>List my place</p>
+        </a>
+
+      </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1"></div>
+
+
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5" style="margin: 15px;background-color: #cbf3ed;text-align: center;padding: 8px;border-radius: 18px 18px 18px 18px;">
+        <a href="{% url 'Room_Find_a_place' %}">
+          <p>I need a room</p>
+          <p>Find a place</p>
+        </a>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="row" style="margin-top: 37px;">
+
+      {% for i in get_the_all_list %}
+
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+
+                <div class="grid-margin stretch-card" >
+                    <div class="card" style="height: 265px;background-color: #d5d3d0;margin-bottom: 15px;width: 100%;">
+                        <div class="card-body">
+
+                            <a href="{% url 'details_page' i.id %}">
+                                <div style=" width: 100%; height: 52%;">
+                                <img src="{{ i.model_Property_and_room_images_1.first.model_Property_and_room_images_1.url }}" style="width: 100%; height: 100%;"/>
+                                </div>
+                                <p>{{i.model_offering_accommodation}}</p>
+                                <p>{{i.model_property}}</p>
+                                <p>{{i.model_Property_Address}}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+              </div>
+
+{% endfor %}
+
+
+            </div>
+
+
+
+
+
+
+{% endblock %}
